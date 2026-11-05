@@ -1,5 +1,6 @@
 from collections.abc import Callable
 from pathlib import Path
+from typing import Optional
 
 from .errors import ModuleUnavailableError
 from .input_module import validate_matrix
@@ -15,8 +16,8 @@ OutputHandler = Callable[[list[list[float]]], str]
 def run_pipeline(
     matrix: list[list[float]],
     exchange_dir: Path,
-    processor: MatrixHandler | None = swap_extreme_rows,
-    formatter: OutputHandler | None = format_matrix,
+    processor: Optional[MatrixHandler] = swap_extreme_rows,
+    formatter: Optional[OutputHandler] = format_matrix,
 ) -> str:
     if processor is None:
         raise ModuleUnavailableError("Модуль обработки недоступен.")
