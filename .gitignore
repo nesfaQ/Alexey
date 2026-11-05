@@ -12,8 +12,10 @@ venv/
 .venv/
 __pycache__/
 .pytest_cache/
+.coverage
+htmlcov/
+integration_data/
 
 # Настройки редакторов
 .idea/
 .vscode/
-
