@@ -57,6 +57,23 @@ flake8 src tests
 GitHub Actions запускает обычные и интеграционные тесты, линтер и проверку
 покрытия. Описание интеграции находится в [`docs/integration.md`](docs/integration.md).
 
+## Тестирование и качество (ЛР №4)
+
+Я разработал набор `tests/test_quality.py` по методу эквивалентного
+разбиения и дополнил его методами «белого ящика». Workflow `Testing`
+проверяет проект на Python 3.11, 3.12 и 3.13:
+
+```bash
+flake8 src tests
+coverage run --branch --source=src -m pytest -q
+coverage report --show-missing --fail-under=70
+```
+
+Документы: [`testing.md`](docs/testing.md),
+[`code_review.md`](docs/code_review.md),
+[`testing_metrics.md`](docs/testing_metrics.md),
+[`testing_methods.md`](docs/testing_methods.md).
+
 ## Организация разработки
 
 Готовая версия хранится в `main`, текущая разработка выполняется в

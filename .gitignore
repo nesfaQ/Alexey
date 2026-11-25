@@ -16,6 +16,11 @@ __pycache__/
 htmlcov/
 integration_data/
 
+# Материалы отчёта
+_screenshots/
+_report/
+~$*.docx
+
 # Настройки редакторов
 .idea/
 .vscode/
