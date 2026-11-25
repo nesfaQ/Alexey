@@ -1,3 +1,5 @@
+import math
+
 from .errors import InvalidDataError
 
 
@@ -13,9 +15,12 @@ def validate_matrix(matrix: list[list[float]]) -> list[list[float]]:
         if not isinstance(row, list) or len(row) != columns:
             raise InvalidDataError("Все строки матрицы должны быть одинаковой длины.")
         try:
-            result.append([float(value) for value in row])
+            values = [float(value) for value in row]
         except (TypeError, ValueError) as error:
             raise InvalidDataError("В матрице должны быть только числа.") from error
+        if not all(math.isfinite(value) for value in values):
+            raise InvalidDataError("Элементы матрицы должны быть конечными числами.")
+        result.append(values)
     return result
 
 
